@@ -1,0 +1,158 @@
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void conversor() {
+
+		double soluble = 0;
+		double conversion = 0;
+		double cantidad = 0;
+
+		double dolar = 3.79;
+		double euro = 4.06;
+		double yen = 0.028;
+		double won = 0.0029;
+		double libra = 4.60;
+
+		String monedaOriginal = JOptionPane
+				.showInputDialog(null, "Seleciona tu moneda", "Conversor de monedas", JOptionPane.PLAIN_MESSAGE, null,
+						new Object[] { "Dolar", "Euro", "Yen", "Won Coreano", "Libra" }, "Seleciona")
+				.toString();
+
+		String monedaConvertida = JOptionPane.showInputDialog(null, "Seleciona la moneda a convertir", "Conversor de monedas",
+				JOptionPane.PLAIN_MESSAGE, null, new Object[] { "Dolar", "Euro", "Yen", "Won", "Libra" }, "Seleciona")
+				.toString();
+
+		try {
+			cantidad = Double
+					.parseDouble(JOptionPane.showInputDialog(null, "Ingresa la cantidad a convertir", "Monto"));
+		
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Valor no válido");
+		}
+		
+		
+
+		switch (monedaOriginal) {
+		case "Dolar":
+			soluble = cantidad * dolar;
+			break;
+		case "Euro":
+			soluble = cantidad * euro;
+			break;
+		case "Yen":
+			soluble = cantidad * yen;
+			break;
+		case "Won Coreano":
+			soluble = cantidad * won;
+			break;
+		case "Libra":
+			soluble = cantidad * libra;
+			break;
+		}
+
+		switch (monedaConvertida) {
+		case "Dolar":
+			conversion = soluble / dolar;
+			break;
+		case "Euro":
+			conversion = soluble / euro;
+			break;
+		case "Yen":
+			conversion = soluble / yen;
+			break;
+		case "Won Coreano":
+			conversion = soluble / won;
+			break;
+		case "Libra":
+			conversion = soluble / libra;
+			break;
+		}
+		
+		if(cantidad != 0) {
+			JOptionPane.showMessageDialog(null, "Tienes " + conversion + " " + monedaConvertida + "s");
+		}
+		
+
+		int continuacion = JOptionPane.showConfirmDialog(null, "Desea continuar?");
+
+		if (continuacion == 0) {
+			conversor();
+		} else {
+			JOptionPane.showMessageDialog(null, "Programa Finalizado");
+		}
+	}
+
+	public static void tallaPeso() {
+		
+		String opcion = "";
+		double conversion = 0;
+		String respuesta = "";
+		
+		String opciones = JOptionPane.showInputDialog(null, "Seleciona tu opción", "Conversor de Estatura/Peso",
+				JOptionPane.PLAIN_MESSAGE, null, new Object[] { "Kilos a Libras", "Libras a Kilos", "Centimetros a Pies", "Pies a Centimetros"}, "Seleciona")
+				.toString();
+		
+		switch(opciones) {
+		case "Kilos a Libras":
+			opcion =  "el peso en Kilos";
+			break;
+		case "Libras a Kilos":
+			opcion =  "el peso en Libras";
+			break;
+		case "Centimetros a Pies (puede tener coma/decimal)":
+			opcion =  "la altura en Centimetros (sin comas o puntos)";
+			break;
+		case "Pies a Centimetros":
+			opcion =  "la altura en Pies";
+			break;
+			
+		}
+		double cantidad = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingresa " + opcion, opciones));
+		
+		switch(opciones) {
+		case "Kilos a Libras":
+			conversion = cantidad*2.205;
+			respuesta = "El peso en Libras es: ";
+			break;
+		case "Libras a Kilos":
+			conversion = cantidad/2.205;
+			respuesta = "El peso en Kilos es: ";
+			break;
+		case "Centimetros a Pies":
+			conversion = cantidad/30.48;
+			respuesta = "La altura en Pies es: ";
+			break;
+		case "Pies a Centimetros":
+			conversion = cantidad*30.48;
+			respuesta = "La altura en Centimetros es: ";
+			break;
+		}
+		
+		JOptionPane.showMessageDialog(null, respuesta + conversion);
+		
+		int continuacion = JOptionPane.showConfirmDialog(null, "Desea continuar?");
+		
+		if (continuacion == 0) {
+			tallaPeso();
+		} else {
+			JOptionPane.showMessageDialog(null, "Programa Finalizado");
+		}
+		
+	}
+
+	public static void main(String[] args) {
+
+		String conversor = JOptionPane
+				.showInputDialog(null, "Selecione una opcion de conversion", "Menu", JOptionPane.PLAIN_MESSAGE, null,
+						new Object[] { "Conversor de monedas", "Conversor de Estatura/Peso" }, "Selecciona")
+				.toString();
+
+		if (conversor == "Conversor de monedas") {
+			conversor();
+		} else {
+			tallaPeso();
+		}
+
+	}
+}
