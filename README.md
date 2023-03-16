@@ -38,7 +38,7 @@ Al escoger, pregunta la cantidad en esa medida:
 
 Luego, devuelve la conversion:
 
-![image](https://user-images.githubusercontent.com/121326469/225746035-a1cbb58a-0e56-4289-94ec-948ada2dbe94.png)
+![image](https://user-images.githubusercontent.com/121326469/225746565-7cbc508e-9c98-447f-a51e-6a2615e331ec.png)
 
 Tambien pregunta si se desea continuar, con las misma funcionalidad que antes.
 
